@@ -20,6 +20,7 @@ if [ "$1" = 'consumer' ]; then
 	-Dsecor.compression.codec=${COMPRESSION_CODEC} \
         -Dsecor.max.file.size.bytes=${MAX_FILE_SIZE} \
         -Dsecor.max.file.age.seconds=${MAX_FILE_AGE} \
+        -Dsecor.parser.timezone=${TIMEZONE} \
 	-Dlog4j.configuration=log4j.prod.properties \
 	-Dconfig=secor.prod.backup.properties \
 	-cp secor.jar:lib/* \
