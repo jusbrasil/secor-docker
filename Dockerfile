@@ -4,13 +4,14 @@ MAINTAINER Leonardo Gamas <leogamas@gmail.com>
 
 ENV BUILD_DEPS git openjdk-7-jdk maven
 ENV RUNTIME_DEPS openjdk-7-jre-headless
+ENV SECOR_VERSION 0.20
 
 RUN apt-get update \
 	&& apt-get install -y $BUILD_DEPS $RUNTIME_DEPS --no-install-recommends \
-	&& git clone https://github.com/pinterest/secor.git \
+	&& git clone --branch v${SECOR_VERSION} https://github.com/pinterest/secor.git \
 	&& cd secor && mvn clean package && cd .. \
 	&& mkdir /opt/secor \
-	&& tar zxvf secor/target/secor-0.1-SNAPSHOT-bin.tar.gz -C /opt/secor \
+	&& tar zxvf secor/target/secor-${SECOR_VERSION}-SNAPSHOT-bin.tar.gz -C /opt/secor \
 	&& apt-get purge -y --auto-remove $BUILD_DEPS \
 	&& rm -rf secor
 
