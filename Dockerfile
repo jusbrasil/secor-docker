@@ -15,6 +15,8 @@ RUN apt-get update \
 	&& apt-get purge -y --auto-remove $BUILD_DEPS \
 	&& rm -rf secor
 
+RUN ln -s /opt/secor/secor-0.20-SNAPSHOT.jar /opt/secor/secor.jar
+
 ADD run.sh /opt/secor/run.sh
 
 WORKDIR /opt/secor
