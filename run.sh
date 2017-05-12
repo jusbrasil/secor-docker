@@ -23,6 +23,7 @@ if [ "$1" = 'consumer' ]; then
     -Dsecor.parser.timezone=${TIMEZONE} \
     -Dlog4j.configuration=log4j.prod.properties \
     -Dconfig=secor.prod.backup.properties \
+    ${JVM_OPTIONS:-Xms1024m -Xmx2048m} \
     -cp secor.jar:lib/* \
     com.pinterest.secor.main.ConsumerMain
 fi
